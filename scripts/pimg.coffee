@@ -11,7 +11,6 @@ module.exports = (robot) ->
 	  msg.http("http://pimg.zbox.cl/watchdog/query.json?id=#{query}")
 	  .get() (err, res, body) ->
 		  json = JSON.parse(body)
-		  msg.send "#{json.listed}"
 		  if json.listed
 			  msg.send "#{query} Esta en listas negras: #{url}"
 		  else
