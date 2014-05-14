@@ -6,14 +6,12 @@
 
 module.exports = (robot) ->
   robot.respond /pimg (.*)/i, (msg) ->
-    Pimg msg, msg.match[1], (result) ->
-		msg.send result
-		
-Pimg = (msg, query) ->
-	msg.http("http://pimg.zbox.cl/watchdog/query.json?id=#{query}")
-		.get() (err, res, body) ->
-        	try
-          	  json = JSON.parse(body)
-			  json
-
-
+	  query = escape(msg.match[1])
+	  url = "http://pimg.zbox.cl/watchdog/?id=#{query}"
+	  msg.http("http://pimg.zbox.cl/watchdog/query.json?id=#{query}")
+  		.get() (err, res, body) ->
+			json = JSON.parse(body)
+			if json.listed
+				msg.send "#{query} esta en listas negras: #{url}"
+			else
+				msg.send "#{query} no esta en listas negras"
