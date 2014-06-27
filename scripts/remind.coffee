@@ -91,7 +91,7 @@ module.exports = (robot) ->
 
   reminders = new Reminders robot
 
-  robot.respond /(acuerdame|recuerdame) en ((?:(?:\d+) (?:semanas?|dias?|horas?|hrs?|minutos?|min?|segundos?|segs?)[ ,]*(?:y)? +)+)que (.*)/i, (msg) ->
+  robot.respond /(acuerdame|recuerdame) en ((?:(?:\d+) (?:weeks?|days?|hours?|hrs?|minutes?|mins?|seconds?|secs?)[ ,]*(?:y)? +)+)que (.*)/i, (msg) ->
     time = msg.match[1]
     action = msg.match[2]
     reminder = new Reminder msg.envelope, time, action
