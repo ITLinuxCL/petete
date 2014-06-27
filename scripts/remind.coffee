@@ -96,4 +96,4 @@ module.exports = (robot) ->
     action = msg.match[3]
     reminder = new Reminder msg.envelope, time, action
     reminders.add reminder
-    msg.send 'Ok, te acordaré de ' + action + ' en ' + reminder.dueDate()
+    msg.send 'Ok, te acordaré de ' + action + ' en ' + time # + reminder.dueDate()
