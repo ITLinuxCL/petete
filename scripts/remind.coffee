@@ -61,19 +61,19 @@ class Reminder
     periods =
       weeks:
         value: 0
-        regex: "semanas?"
+        regex: "weeks?"
       days:
         value: 0
-        regex: "dias?"
+        regex: "days?"
       hours:
         value: 0
-        regex: "horas?|hrs?"
+        regex: "hours?|hrs?"
       minutes:
         value: 0
-        regex: "minutos?|min?"
+        regex: "minutes?|mins?"
       seconds:
         value: 0
-        regex: "segundos?|segs?"
+        regex: "seconds?|secs?"
 
     for period of periods
       pattern = new RegExp('^.*?([\\d\\.]+)\\s*(?:(?:' + periods[period].regex + ')).*$', 'i')
