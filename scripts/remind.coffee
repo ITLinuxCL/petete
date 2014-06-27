@@ -8,7 +8,7 @@
 #   None
 #
 # Commands:
-#   hubot acuerdame en <tiempo> que <accion> - Configura un recordatorio en <time> para hacer una <action> <time> es en el format 1 dia, 2 horas, 5 minutos, etc. El tiempo es opcional
+#   hubot acuerdame|recuerdame en <tiempo> que <accion> - Configura un recordatorio en <time> para hacer una <action> <time> es en el format 1 dia, 2 horas, 5 minutos, etc. El tiempo es opcional
 #
 # Author:
 #   whitman
@@ -91,7 +91,7 @@ module.exports = (robot) ->
 
   reminders = new Reminders robot
 
-  robot.respond /acuerdame en ((?:(?:\d+) (?:semanas?|dias?|horas?|hrs?|minutos?|min?|segundos?|segs?)[ ,]*(?:y)? +)+)que (.*)/i, (msg) ->
+  robot.respond /(acuerdame|recuerdame) en ((?:(?:\d+) (?:semanas?|dias?|horas?|hrs?|minutos?|min?|segundos?|segs?)[ ,]*(?:y)? +)+)que (.*)/i, (msg) ->
     time = msg.match[1]
     action = msg.match[2]
     reminder = new Reminder msg.envelope, time, action
