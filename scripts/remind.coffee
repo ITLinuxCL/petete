@@ -61,19 +61,19 @@ class Reminder
     periods =
       weeks:
         value: 0
-        regex: "weeks?"
+        regex: "semanas?"
       days:
         value: 0
-        regex: "days?"
+        regex: "dias?"
       hours:
         value: 0
-        regex: "hours?|hrs?"
+        regex: "horas?|hrs?"
       minutes:
         value: 0
-        regex: "minutes?|mins?"
+        regex: "minutos?|mins?"
       seconds:
         value: 0
-        regex: "seconds?|secs?"
+        regex: "segundos?|segs?"
 
     for period of periods
       pattern = new RegExp('^.*?([\\d\\.]+)\\s*(?:(?:' + periods[period].regex + ')).*$', 'i')
@@ -91,7 +91,7 @@ module.exports = (robot) ->
 
   reminders = new Reminders robot
 
-  robot.respond /(recuerdame|acuerdame) en ((?:(?:\d+) (?:weeks?|days?|hours?|hrs?|minutes?|mins?|seconds?|secs?)[ ,]*(?:and)? +)+)que (.*)/i, (msg) ->
+  robot.respond /(recuerdame|acuerdame) en ((?:(?:\d+) (?:semanas?|dias?|horas?|hrs?|minutos?|mins?|segundos?|segs?)[ ,]*(?:and)? +)+)que (.*)/i, (msg) ->
     time = msg.match[2]
     action = msg.match[3]
     reminder = new Reminder msg.envelope, time, action
