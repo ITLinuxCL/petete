@@ -1,5 +1,5 @@
 # Description:
-#   Forgetful? Add reminders
+#   Para que nada se olvide
 #
 # Dependencies:
 #   None
@@ -8,7 +8,7 @@
 #   None
 #
 # Commands:
-#   hubot acuerdame en <time> to <action> - Set a reminder in <time> to do an <action> <time> is in the format 1 day, 2 hours, 5 minutes etc. Time segments are optional, as are commas
+#   hubot acuerdame en <tiempo> que <accion> - Configura un recordatorio en <time> para hacer una <action> <time> es en el format 1 dia, 2 horas, 5 minutos, etc. El tiempo es opcional
 #
 # Author:
 #   whitman
@@ -61,19 +61,19 @@ class Reminder
     periods =
       weeks:
         value: 0
-        regex: "weeks?"
+        regex: "semanas?"
       days:
         value: 0
-        regex: "days?"
+        regex: "dias?"
       hours:
         value: 0
-        regex: "hours?|hrs?"
+        regex: "horas?|hrs?"
       minutes:
         value: 0
-        regex: "minutes?|mins?"
+        regex: "minutos?|min?"
       seconds:
         value: 0
-        regex: "seconds?|secs?"
+        regex: "segundos?|segs?"
 
     for period of periods
       pattern = new RegExp('^.*?([\\d\\.]+)\\s*(?:(?:' + periods[period].regex + ')).*$', 'i')
@@ -91,7 +91,7 @@ module.exports = (robot) ->
 
   reminders = new Reminders robot
 
-  robot.respond /acuerdame en ((?:(?:\d+) (?:weeks?|days?|hours?|hrs?|minutes?|mins?|seconds?|secs?)[ ,]*(?:and)? +)+)to (.*)/i, (msg) ->
+  robot.respond /acuerdame en ((?:(?:\d+) (?:semanas?|dias?|horas?|hrs?|minutos?|min?|segundos?|segs?)[ ,]*(?:y)? +)+)que (.*)/i, (msg) ->
     time = msg.match[1]
     action = msg.match[2]
     reminder = new Reminder msg.envelope, time, action
