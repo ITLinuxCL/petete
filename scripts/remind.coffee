@@ -8,7 +8,7 @@
 #   None
 #
 # Commands:
-#   hubot remind me in <time> to <action> - Set a reminder in <time> to do an <action> <time> is in the format 1 day, 2 hours, 5 minutes etc. Time segments are optional, as are commas
+#   hubot acuerdame en <time> to <action> - Set a reminder in <time> to do an <action> <time> is in the format 1 day, 2 hours, 5 minutes etc. Time segments are optional, as are commas
 #
 # Author:
 #   whitman
@@ -42,7 +42,7 @@ class Reminders
       if @cache.length > 0
         trigger = =>
           reminder = @removeFirst()
-          @robot.reply reminder.msg_envelope, 'you asked me to remind you to ' + reminder.action
+          @robot.reply reminder.msg_envelope, 'me pediste que te acordara ' + reminder.action
           @queue()
         # setTimeout uses a 32-bit INT
         extendTimeout = (timeout, callback) ->
@@ -91,9 +91,9 @@ module.exports = (robot) ->
 
   reminders = new Reminders robot
 
-  robot.respond /remind me in ((?:(?:\d+) (?:weeks?|days?|hours?|hrs?|minutes?|mins?|seconds?|secs?)[ ,]*(?:and)? +)+)to (.*)/i, (msg) ->
+  robot.respond /acuerdame en ((?:(?:\d+) (?:weeks?|days?|hours?|hrs?|minutes?|mins?|seconds?|secs?)[ ,]*(?:and)? +)+)to (.*)/i, (msg) ->
     time = msg.match[1]
     action = msg.match[2]
     reminder = new Reminder msg.envelope, time, action
     reminders.add reminder
-    msg.send 'I\'ll remind you to ' + action + ' on ' + reminder.dueDate()
+    msg.send 'Te recordare ' + action + ' el ' + reminder.dueDate()
