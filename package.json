@@ -25,7 +25,7 @@
     "hubot-hipchat": "^2.6.4",
     "wolfram": "^0.2.2",
     "hubot-scripts": ">= 2.5.0 < 3.0.0",
-	"libxmljs": "^0.10.0"
+     "libxmljs": "^0.10.0"
   },
   "engines": {
     "node": ">= 0.8.x",
