@@ -8,7 +8,7 @@
 #   HUBOT_WOLFRAM_APPID - your AppID
 #
 # Commands:
-#   hubot question <question> - Searches Wolfram Alpha for the answer to the question
+#   hubot consulta <question> - Searches Wolfram Alpha for the answer to the question
 #
 # Notes:
 #   This may not work with node 0.6.x
