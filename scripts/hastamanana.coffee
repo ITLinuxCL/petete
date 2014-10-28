@@ -25,6 +25,6 @@ module.exports = (robot) ->
 
 
 module.exports = (robot) ->
-    robot.hear /(voy .* y vuelvo | voy .* a comprar )/i, (msg) ->
+    robot.hear /(voy.*vuelvo|voy.*comprar)/i, (msg) ->
         mensaje = msg.random voy_y_vuelvos 
         msg.send mensaje.replace "%", "@#{msg.message.user.mention_name}"
