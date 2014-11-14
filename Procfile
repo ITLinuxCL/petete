@@ -1,1 +1,1 @@
-web: bin/hubot -a hipchat -n petete
+hubot: bin/hubot -a hipchat -n petete
