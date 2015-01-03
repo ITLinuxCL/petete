@@ -1,7 +1,7 @@
 # VERSION   0.2
 # DOCKER-VERSION  0.4.0
 
-from  phusion/passenger-nodejs
+from  phusion/passenger-full
 
 run   apt-get -y update
 run   apt-get -y install wget git redis-server
@@ -9,15 +9,26 @@ run   apt-get -y install build-essential python
 run   apt-get -y install libexpat1-dev libexpat1 libicu-dev
 
 run   npm install coffee-script hubot yo generator-hubot -g
+RUN /build/redis.sh
 
-run   apt-get -y install supervisor
-run   mkdir -p /var/log/supervisor
-run   mkdir -p /opt/petete
+run   mkdir -p /home/app/petete
+run mkdir -p /etc/service/petete/
+RUN touch /var/log/petete.log
+RUN chown 9999:9999 /var/log/petete.log
+RUN rm -f /etc/service/redis/down
+ADD petete.sh /etc/service/petete/run
 
-add   supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+ADD pbruna-ssh-key.pub /tmp/your_key
+RUN cat /tmp/your_key >> /root/.ssh/authorized_keys && rm -f /tmp/your_key
 
-workdir	/opt/petete
-run   npm install --save hubot-hipchat
-add   . /opt/petete
+workdir	/home/app/petete
+run yo hubot
+ADD external-scripts.json /home/app/petete/
+ADD package.json /home/app/petete/
+ADD hubot-scripts.json /home/app/petete/
+run npm install
+run npm install --save hubot-hipchat
 
-cmd   supervisord -c /etc/supervisor/conf.d/supervisord.conf
+add . /home/app/petete
+
+CMD ["/sbin/my_init"]
