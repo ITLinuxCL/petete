@@ -9,7 +9,6 @@ run   apt-get -y install build-essential python
 run   apt-get -y install libexpat1-dev libexpat1 libicu-dev
 
 run   npm install coffee-script hubot -g
-run   npm install --save hubot-hipchat
 
 run   apt-get -y install supervisor
 run   mkdir -p /var/log/supervisor
@@ -17,6 +16,9 @@ run   mkdir -p /opt/petete
 
 add   supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
+run   hubot --create /opt/petete
+workdir	/opt/petete
+run   npm install --save hubot-hipchat
 add   . /opt/petete
 
 cmd   supervisord -n
