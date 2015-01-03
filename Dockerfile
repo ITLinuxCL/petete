@@ -4,9 +4,7 @@
 from  phusion/passenger-full
 
 run   apt-get -y update
-run   apt-get -y install wget git redis-server
-run   apt-get -y install build-essential python
-run   apt-get -y install libexpat1-dev libexpat1 libicu-dev
+run   apt-get -y install wget git build-essential python libexpat1-dev libexpat1 libicu-dev
 
 run   npm install coffee-script hubot yo generator-hubot -g
 RUN /build/redis.sh
