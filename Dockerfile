@@ -7,7 +7,6 @@ run   apt-get -y update
 run   apt-get -y install wget git build-essential python libexpat1-dev libexpat1 libicu-dev
 
 run   npm install coffee-script hubot yo generator-hubot -g
-RUN /build/redis.sh
 
 run   mkdir -p /home/app/petete
 run mkdir -p /etc/service/petete/
