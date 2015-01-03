@@ -19,7 +19,6 @@ ADD pbruna-ssh-key.pub /tmp/your_key
 RUN cat /tmp/your_key >> /root/.ssh/authorized_keys && rm -f /tmp/your_key
 
 workdir	/home/app/petete
-run sudo yo hubot
 ADD external-scripts.json /home/app/petete/
 ADD package.json /home/app/petete/
 ADD hubot-scripts.json /home/app/petete/
