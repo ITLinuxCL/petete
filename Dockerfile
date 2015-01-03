@@ -1,9 +1,8 @@
 # VERSION   0.2
 # DOCKER-VERSION  0.4.0
 
-from  ubuntu:12.10
+from  phusion/passenger-nodejs
 
-run   echo "deb http://archive.ubuntu.com/ubuntu quantal main universe" > /etc/apt/sources.list
 run   apt-get -y update
 run   apt-get -y install wget git redis-server
 run   apt-get -y install build-essential python
