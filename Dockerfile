@@ -16,7 +16,6 @@ run   mkdir -p /opt/petete
 
 add   supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
-run   hubot --create /opt/petete
 workdir	/opt/petete
 run yo hubot
 run   npm install --save hubot-hipchat
