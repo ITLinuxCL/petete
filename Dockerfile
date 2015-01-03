@@ -8,7 +8,7 @@ run   apt-get -y install wget git redis-server
 run   apt-get -y install build-essential python
 run   apt-get -y install libexpat1-dev libexpat1 libicu-dev
 
-run   npm install coffee-script hubot -g
+run   npm install coffee-script hubot yo generator-hubot -g
 
 run   apt-get -y install supervisor
 run   mkdir -p /var/log/supervisor
@@ -18,6 +18,7 @@ add   supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 run   hubot --create /opt/petete
 workdir	/opt/petete
+run yo hubot
 run   npm install --save hubot-hipchat
 add   . /opt/petete
 
