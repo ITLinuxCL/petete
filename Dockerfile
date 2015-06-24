@@ -27,4 +27,7 @@ run npm install --save hubot-hipchat
 
 add . /home/app/petete
 
+run npm install
+run npm install --save hubot-hipchat
+
 CMD ["/sbin/my_init"]
