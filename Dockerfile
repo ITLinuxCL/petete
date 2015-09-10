@@ -29,5 +29,7 @@ add . /home/app/petete
 
 run npm install
 run npm install --save hubot-hipchat
+run cd /home/app/petete/node_modules/hubot-rocketchat
+run npm install
 
 CMD ["/sbin/my_init"]
